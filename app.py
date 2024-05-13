@@ -17,6 +17,10 @@ if __name__ == '__main__':
     conn_dwh, engine_dwh = connection.psql_conn(conf_dwh, 'DataWarehouse')
     cursor_dwh = conn_dwh.cursor()
 
+    # connection hadoop
+    conf_hadoop = connection.config('hadoop')
+    client = connection.hadoop_conn(conf_hadoop)
+
     # get query string
     path_query = os.getcwd()+'/query/'
     query = sqlparse.format(
@@ -35,12 +39,21 @@ if __name__ == '__main__':
         df = pd.read_sql(query, engine)
 
         # create schema dwh
-        cursor_dwh.execute(dwh_design)
-        conn_dwh.commit()
+        # cursor_dwh.execute(dwh_design)
+        # conn_dwh.commit()
 
         # ingest data to dwh
-        df.to_sql('dim_orders', engine_dwh, if_exists='append', index=False)
+        # df.to_sql('dim_orders', engine_dwh, if_exists='append', index=False)
+
+        # ingest data to hadoop
+        with client.write(
+            '/digitalskola/project/dim_orders_zidanali.csv',
+            encoding='utf-8'
+        ) as writer:
+            df.to_csv(writer, index=False)
+
         print('[INFO] Service ETL is Success ...')
     except Exception as e:
         print('[INFO] Service ETL is Failed ...')
+        print(e)
     

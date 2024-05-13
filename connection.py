@@ -1,6 +1,7 @@
 import os
 import json
 import psycopg2
+import hdfs
 
 from sqlalchemy import create_engine
 
@@ -25,3 +26,12 @@ def psql_conn(conf, name_conn):
     except Exception as e:
         print(f"[INFO] Can't connect PostgreSQL {name_conn}")
         print(str(e))
+
+def hadoop_conn(conf):
+    client = conf['client']
+    try:
+        conn = hdfs.InsecureClient(client)
+        print(f"[INFO] Succes connect Hadoop...")
+        return conn
+    except:
+        print(f"[INFO] Can't connect Hadoop...")
