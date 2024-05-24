@@ -18,10 +18,10 @@
     docker run -d -it --name hadoop-local -p 9864:9864 -p 9870:9870 -p 8088:8088 --hostname hadoop-local hadoop
     ```
 4. Jangan lupa untuk tambahkan host nya
-    
+    ```
     127.0.0.1 hadoop-local
     35.222.31.142 hadoop-server
-    
+    ```
 5. Add hosts in device windows:
     - localhost custom domain name https://ecompile.io/blog/localhost-custom-domain-name
 6. Setelah install Hadoop, Pastikan apps dibawah ini running:
