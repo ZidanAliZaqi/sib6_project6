@@ -6,7 +6,7 @@ import pandas as pd
 
 if __name__ == '__main__':
     print('[INFO] Service ETL is Starting ...')
-    
+
     # connection data source
     conf = connection.config('marketplace_prod')
     conn, engine = connection.psql_conn(conf, 'DataSource')
