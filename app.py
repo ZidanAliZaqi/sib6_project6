@@ -56,4 +56,3 @@ if __name__ == '__main__':
     except Exception as e:
         print('[INFO] Service ETL is Failed ...')
         print(e)
-    
