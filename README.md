@@ -101,3 +101,27 @@ class OrderDateCount(MRJob):
 
 if __name__ == '__main__':
     OrderDateCount.run()
+
+
+## config.json
+```json
+{
+    "marketplace_prod": {
+        "host": "35.222.31.142",
+        "db": "data_source",
+        "user": "postgres",
+        "password": "sib6_admin",
+        "port": "5436"
+    },
+    "dwh": {
+        "host": "35.222.31.142",
+        "db": "dwh",
+        "user": "postgres",
+        "password": "sib6_admin",
+        "port": "5436"
+    },
+    "hadoop":{
+        "client":"http://hadoop-server:9870"
+    }
+}
+
