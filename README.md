@@ -101,9 +101,9 @@ class OrderDateCount(MRJob):
 
 if __name__ == '__main__':
     OrderDateCount.run()
+```
 
-
-## config.json
+## Config.json
 ```json
 {
     "marketplace_prod": {
